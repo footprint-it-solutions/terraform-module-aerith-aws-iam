@@ -27,7 +27,22 @@ resource "aws_iam_role_policy" "eks_admin" {
   policy = jsonencode({
     Statement = [
       {
-        Action   = ["eks:DescribeCluster"]
+        Action = [
+          "eks:AccessKubernetesApi",
+          "eks:DescribeAddon",
+          "eks:DescribeAddonVersions",
+          "eks:DescribeCluster",
+          "eks:DescribeFargateProfile",
+          "eks:DescribeIdentityProviderConfig",
+          "eks:DescribeNodegroup",
+          "eks:DescribeUpdate",
+          "eks:ListAddons",
+          "eks:ListClusters",
+          "eks:ListFargateProfiles",
+          "eks:ListIdentityProviderConfigs",
+          "eks:ListNodegroups",
+          "eks:ListUpdates",
+        ]
         Effect   = "Allow"
         Resource = "*"
       },
@@ -59,7 +74,22 @@ resource "aws_iam_role_policy" "eks_admin_view" {
   policy = jsonencode({
     Statement = [
       {
-        Action   = ["eks:DescribeCluster"]
+        Action = [
+          "eks:AccessKubernetesApi",
+          "eks:DescribeAddon",
+          "eks:DescribeAddonVersions",
+          "eks:DescribeCluster",
+          "eks:DescribeFargateProfile",
+          "eks:DescribeIdentityProviderConfig",
+          "eks:DescribeNodegroup",
+          "eks:DescribeUpdate",
+          "eks:ListAddons",
+          "eks:ListClusters",
+          "eks:ListFargateProfiles",
+          "eks:ListIdentityProviderConfigs",
+          "eks:ListNodegroups",
+          "eks:ListUpdates",
+        ]
         Effect   = "Allow"
         Resource = "*"
       },
@@ -92,8 +122,20 @@ resource "aws_iam_role_policy" "gemini_cli" {
     Statement = [
       {
         Action = [
+          "eks:AccessKubernetesApi",
+          "eks:DescribeAddon",
+          "eks:DescribeAddonVersions",
           "eks:DescribeCluster",
+          "eks:DescribeFargateProfile",
+          "eks:DescribeIdentityProviderConfig",
+          "eks:DescribeNodegroup",
+          "eks:DescribeUpdate",
+          "eks:ListAddons",
           "eks:ListClusters",
+          "eks:ListFargateProfiles",
+          "eks:ListIdentityProviderConfigs",
+          "eks:ListNodegroups",
+          "eks:ListUpdates",
         ]
         Effect   = "Allow"
         Resource = "*"

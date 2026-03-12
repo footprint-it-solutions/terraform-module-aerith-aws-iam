@@ -7,12 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Use this section to track upcoming changes, to let people see what changes they might expect in
-upcoming relases.
+### Added
 
-At release time, move the entries from here to a new release section.
-
-### Additions
+- Added comprehensive EKS permissions (AccessKubernetesApi, Describe*, List*) to `aerith-eks-admin`, `aerith-eks-admin-view`, and `aerith-gemini-cli` roles.
 
 - Added `aerith-gemini-cli` IAM role and policy for EKS management.
 - Added `eks:DescribeCluster` permissions to `aerith-eks-admin` and `aerith-eks-admin-view` roles.
