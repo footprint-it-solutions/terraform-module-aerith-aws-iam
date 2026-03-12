@@ -14,9 +14,15 @@ At release time, move the entries from here to a new release section.
 
 ### Additions
 
+- Added `aerith-gemini-cli` IAM role and policy for EKS management.
+- Added `eks:DescribeCluster` permissions to `aerith-eks-admin` and `aerith-eks-admin-view` roles.
+
 ### Fixes
 
 ### Changes
+
+- Updated `trust_arn` variable to default to `null` and use `aerith-gemini-cli` as fallback.
+- Switched `eks_admin` and `eks_admin_view` roles to use local `trust_arn`.
 
 ### Removals
 
