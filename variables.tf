@@ -4,7 +4,7 @@ variable "cluster_name" {
 }
 
 variable "trust_arn" {
-  default     = "arn:aws:iam::203918840229:role/aerith-gemini-cli"
+  default     = null
   description = "The ARN of the IAM role to trust"
   type        = string
 }
