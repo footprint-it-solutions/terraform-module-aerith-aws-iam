@@ -13,9 +13,6 @@ upcoming relases.
 At release time, move the entries from here to a new release section.
 
 ### Additions
-- Added `aerith-eks-admin` and `aerith-eks-admin-view` IAM roles.
-- Added EKS access entries and policy associations for cluster administration and viewing.
-- Added `cluster_name` and `trust_arn` variables.
 
 ### Fixes
 
@@ -23,14 +20,16 @@ At release time, move the entries from here to a new release section.
 
 ### Removals
 
-## [0.0.0] - YYYY-MM-DD
+## [1.0.0] - 2026-03-12
+
+### Added
+
+- Added `aerith-eks-admin` and `aerith-eks-admin-view` IAM roles.
+- Added EKS access entries and policy associations for cluster administration and viewing.
+- Added `cluster_name` and `trust_arn` variables.
+
+## [0.0.0] - 2026-03-12
 
 ### Added
 
 - Template repository created
-
-### Changed
-
-### Fixed
-
-### Removed
