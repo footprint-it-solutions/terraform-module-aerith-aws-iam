@@ -1,9 +1,3 @@
-data "aws_caller_identity" "current" {}
-
-locals {
-  trust_arn = var.trust_arn != null ? var.trust_arn : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aerith-gemini-cli"
-}
-
 resource "aws_iam_role" "eks_admin" {
   assume_role_policy = jsonencode({
     Statement = [
@@ -11,7 +5,7 @@ resource "aws_iam_role" "eks_admin" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          AWS = local.trust_arn
+          AWS = var.trust_arn
         }
       },
     ]
@@ -58,7 +52,7 @@ resource "aws_iam_role" "eks_admin_view" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          AWS = local.trust_arn
+          AWS = var.trust_arn
         }
       },
     ]
@@ -92,61 +86,6 @@ resource "aws_iam_role_policy" "eks_admin_view" {
         ]
         Effect   = "Allow"
         Resource = "*"
-      },
-    ]
-    Version = "2012-10-17"
-  })
-}
-
-resource "aws_iam_role" "gemini_cli" {
-  assume_role_policy = jsonencode({
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
-        }
-      },
-    ]
-    Version = "2012-10-17"
-  })
-  name = "aerith-gemini-cli"
-}
-
-resource "aws_iam_role_policy" "gemini_cli" {
-  name = "gemini-cli"
-  role = aws_iam_role.gemini_cli.id
-
-  policy = jsonencode({
-    Statement = [
-      {
-        Action = [
-          "eks:AccessKubernetesApi",
-          "eks:DescribeAddon",
-          "eks:DescribeAddonVersions",
-          "eks:DescribeCluster",
-          "eks:DescribeFargateProfile",
-          "eks:DescribeIdentityProviderConfig",
-          "eks:DescribeNodegroup",
-          "eks:DescribeUpdate",
-          "eks:ListAddons",
-          "eks:ListClusters",
-          "eks:ListFargateProfiles",
-          "eks:ListIdentityProviderConfigs",
-          "eks:ListNodegroups",
-          "eks:ListUpdates",
-        ]
-        Effect   = "Allow"
-        Resource = "*"
-      },
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Resource = [
-          aws_iam_role.eks_admin.arn,
-          aws_iam_role.eks_admin_view.arn,
-        ]
       },
     ]
     Version = "2012-10-17"
