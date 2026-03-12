@@ -6,6 +6,7 @@ This module creates IAM roles and EKS access entries for Aerith.
 
 - `aerith-eks-admin` IAM Role
 - `aerith-eks-admin-view` IAM Role
+- `aerith-gemini-cli` IAM Role
 - EKS Access Entry and Policy Association for `AmazonEKSClusterAdminPolicy`
 - EKS Access Entry and Policy Association for `AmazonEKSAdminViewPolicy`
 
@@ -24,4 +25,4 @@ module "aerith_iam" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | cluster_name | The name of the EKS cluster | `string` | n/a | yes |
-| trust_arn | The ARN of the IAM role to trust | `string` | `"arn:aws:iam::203918840229:role/aerith-gemini-cli"` | no |
+| trust_arn | The ARN of the IAM role to trust. Defaults to `aerith-gemini-cli` in the current account. | `string` | `null` | no |
