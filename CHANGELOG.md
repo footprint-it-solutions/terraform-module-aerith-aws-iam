@@ -7,29 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Use this section to track upcoming changes, to let people see what changes they might expect in
-upcoming relases.
+### Added
 
-At release time, move the entries from here to a new release section.
+### Fixed
 
-### Additions
+### Changed
 
-### Fixes
+### Removed
 
-### Changes
+## [1.1.0] - 2026-03-12
 
-### Removals
+### Added
+
+- Comprehensive EKS permissions (AccessKubernetesApi, Describe*, List*) to `aerith-eks-admin` and `aerith-eks-admin-view` roles.
+- `eks:DescribeCluster` permissions to `aerith-eks-admin` and `aerith-eks-admin-view` roles.
 
 ## [1.0.0] - 2026-03-12
 
-### Added
+### Initial Release
 
-- Added `aerith-eks-admin` and `aerith-eks-admin-view` IAM roles.
-- Added EKS access entries and policy associations for cluster administration and viewing.
-- Added `cluster_name` and `trust_arn` variables.
-
-## [0.0.0] - 2026-03-12
-
-### Added
-
-- Template repository created
+- `aerith-eks-admin` and `aerith-eks-admin-view` IAM roles.
+- EKS Access Entry and Policy Association for `AmazonEKSClusterAdminPolicy` and `AmazonEKSAdminViewPolicy`.
