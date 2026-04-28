@@ -1,4 +1,4 @@
-resource "aws_iam_role" "eks_admin" {
+resource "aws_iam_role" "admin" {
   assume_role_policy = jsonencode({
     Statement = [
       {
@@ -11,12 +11,12 @@ resource "aws_iam_role" "eks_admin" {
     ]
     Version = "2012-10-17"
   })
-  name = "aerith-eks-admin"
+  name = "aerith-admin"
 }
 
-resource "aws_iam_role_policy" "eks_admin" {
-  name = "eks-admin"
-  role = aws_iam_role.eks_admin.id
+resource "aws_iam_role_policy" "admin" {
+  name = "aerith-admin"
+  role = aws_iam_role.admin.id
 
   policy = jsonencode({
     Statement = [
@@ -45,7 +45,12 @@ resource "aws_iam_role_policy" "eks_admin" {
   })
 }
 
-resource "aws_iam_role" "eks_admin_view" {
+resource "aws_iam_role_policy_attachment" "admin" {
+  role       = aws_iam_role.admin.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+resource "aws_iam_role" "read_only" {
   assume_role_policy = jsonencode({
     Statement = [
       {
@@ -58,12 +63,12 @@ resource "aws_iam_role" "eks_admin_view" {
     ]
     Version = "2012-10-17"
   })
-  name = "aerith-eks-admin-view"
+  name = aerith-read-only"
 }
 
-resource "aws_iam_role_policy" "eks_admin_view" {
-  name = "eks-admin-view"
-  role = aws_iam_role.eks_admin_view.id
+resource "aws_iam_role_policy" "read_only" {
+  name = "aerith-read-only"
+  role = aws_iam_role.read_only.id
 
   policy = jsonencode({
     Statement = [
@@ -90,4 +95,9 @@ resource "aws_iam_role_policy" "eks_admin_view" {
     ]
     Version = "2012-10-17"
   })
+}
+
+resource "aws_iam_role_policy_attachment" "read_only" {
+  role       = aws_iam_role.read_only.name
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
 }
