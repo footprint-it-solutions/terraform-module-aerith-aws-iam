@@ -32,7 +32,7 @@ resource "aws_iam_role" "read_only" {
     ]
     Version = "2012-10-17"
   })
-  name = aerith-read-only"
+  name = "aerith-read-only"
 }
 
 resource "aws_iam_role_policy_attachment" "read_only" {
