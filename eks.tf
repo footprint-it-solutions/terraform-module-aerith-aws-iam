@@ -1,10 +1,10 @@
-resource "aws_eks_access_entry" "eks_admin" {
+resource "aws_eks_access_entry" "admin" {
   cluster_name  = var.cluster_name
   principal_arn = aws_iam_role.admin.arn
   type          = "STANDARD"
 }
 
-resource "aws_eks_access_policy_association" "eks_admin" {
+resource "aws_eks_access_policy_association" "cluster_admin" {
   access_scope {
     type = "cluster"
   }
@@ -13,13 +13,13 @@ resource "aws_eks_access_policy_association" "eks_admin" {
   principal_arn = aws_iam_role.admin.arn
 }
 
-resource "aws_eks_access_entry" "eks_admin_view" {
+resource "aws_eks_access_entry" "read_only" {
   cluster_name  = var.cluster_name
   principal_arn = aws_iam_role.read_only.arn
   type          = "STANDARD"
 }
 
-resource "aws_eks_access_policy_association" "eks_admin_view" {
+resource "aws_eks_access_policy_association" "admin_view" {
   access_scope {
     type = "cluster"
   }
