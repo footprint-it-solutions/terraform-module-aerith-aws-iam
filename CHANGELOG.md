@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Removed
+
+## [2.1.0] - 2026-05-12
+
+### Added
+
 - `add_eks_resources` variable to control the creation of EKS-related resources.
 
 ### Changed
