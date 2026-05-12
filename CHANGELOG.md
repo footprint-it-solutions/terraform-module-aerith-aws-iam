@@ -15,6 +15,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.1.0] - 2026-05-12
+
+### Added
+
+- `add_eks_resources` variable to control the creation of EKS-related resources.
+
+### Changed
+
+- Made `cluster_name` variable optional (defaults to `null`).
+- Made EKS access entries and policy associations optional, controlled by `add_eks_resources`.
+
 ## [2.0.0] - 2026-04-28
 
 ### Changed
