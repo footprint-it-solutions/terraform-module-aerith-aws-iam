@@ -1,12 +1,12 @@
 resource "aws_eks_access_entry" "admin" {
-  count         = var.enable_eks ? 1 : 0
+  count         = var.add_eks_resources ? 1 : 0
   cluster_name  = var.cluster_name
   principal_arn = aws_iam_role.admin.arn
   type          = "STANDARD"
 }
 
 resource "aws_eks_access_policy_association" "cluster_admin" {
-  count = var.enable_eks ? 1 : 0
+  count = var.add_eks_resources ? 1 : 0
   access_scope {
     type = "cluster"
   }
@@ -16,14 +16,14 @@ resource "aws_eks_access_policy_association" "cluster_admin" {
 }
 
 resource "aws_eks_access_entry" "read_only" {
-  count         = var.enable_eks ? 1 : 0
+  count         = var.add_eks_resources ? 1 : 0
   cluster_name  = var.cluster_name
   principal_arn = aws_iam_role.read_only.arn
   type          = "STANDARD"
 }
 
 resource "aws_eks_access_policy_association" "admin_view" {
-  count = var.enable_eks ? 1 : 0
+  count = var.add_eks_resources ? 1 : 0
   access_scope {
     type = "cluster"
   }

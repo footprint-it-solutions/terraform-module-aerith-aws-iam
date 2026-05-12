@@ -4,7 +4,7 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "enable_eks" {
+variable "add_eks_resources" {
   default     = true
   description = "Whether to enable EKS-related resources"
   type        = bool

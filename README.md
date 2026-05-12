@@ -27,7 +27,7 @@ module "aerith_iam" {
 module "aerith_iam" {
   source = "github.com/footprint-it-solutions/terraform-module-aerith-aws-iam//?ref=main"
 
-  enable_eks = false
+  add_eks_resources = false
 }
 ```
 
@@ -35,6 +35,6 @@ module "aerith_iam" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cluster_name | The name of the EKS cluster. Required if `enable_eks` is `true`. | `string` | `null` | no |
-| enable_eks | Whether to enable EKS-related resources. | `bool` | `true` | no |
+| cluster_name | The name of the EKS cluster. Required if `add_eks_resources` is `true`. | `string` | `null` | no |
+| add_eks_resources | Whether to enable EKS-related resources. | `bool` | `true` | no |
 | trust_arn | The ARN of the IAM role to trust | `string` | `"arn:aws:iam::203918840229:role/aerith-gemini-cli"` | no |
