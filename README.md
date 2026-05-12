@@ -1,15 +1,17 @@
 # Terraform Module Aerith AWS IAM
 
-This module creates IAM roles and EKS access entries for Aerith.
+This module creates IAM roles and optionally EKS access entries for Aerith.
 
 ## Resources
 
-- `aerith-eks-admin` IAM Role
-- `aerith-eks-admin-view` IAM Role
-- EKS Access Entry and Policy Association for `AmazonEKSClusterAdminPolicy`
-- EKS Access Entry and Policy Association for `AmazonEKSAdminViewPolicy`
+- `aerith-admin` IAM Role
+- `aerith-read-only` IAM Role
+- EKS Access Entry and Policy Association for `AmazonEKSClusterAdminPolicy` (Optional)
+- EKS Access Entry and Policy Association for `AmazonEKSAdminViewPolicy` (Optional)
 
 ## Usage
+
+### With EKS (Default)
 
 ```hcl
 module "aerith_iam" {
@@ -19,9 +21,20 @@ module "aerith_iam" {
 }
 ```
 
+### Without EKS
+
+```hcl
+module "aerith_iam" {
+  source = "github.com/footprint-it-solutions/terraform-module-aerith-aws-iam//?ref=main"
+
+  enable_eks = false
+}
+```
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cluster_name | The name of the EKS cluster | `string` | n/a | yes |
+| cluster_name | The name of the EKS cluster. Required if `enable_eks` is `true`. | `string` | `null` | no |
+| enable_eks | Whether to enable EKS-related resources. | `bool` | `true` | no |
 | trust_arn | The ARN of the IAM role to trust | `string` | `"arn:aws:iam::203918840229:role/aerith-gemini-cli"` | no |

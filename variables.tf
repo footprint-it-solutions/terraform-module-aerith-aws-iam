@@ -1,6 +1,13 @@
 variable "cluster_name" {
+  default     = null
   description = "The name of the EKS cluster"
   type        = string
+}
+
+variable "enable_eks" {
+  default     = true
+  description = "Whether to enable EKS-related resources"
+  type        = bool
 }
 
 variable "trust_arn" {

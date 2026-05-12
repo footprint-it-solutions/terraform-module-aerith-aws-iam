@@ -9,11 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-### Fixed
+- `enable_eks` variable to control the creation of EKS-related resources.
 
 ### Changed
 
-### Removed
+- Made `cluster_name` variable optional (defaults to `null`).
+- Made EKS access entries and policy associations optional, controlled by `enable_eks`.
 
 ## [2.0.0] - 2026-04-28
 
