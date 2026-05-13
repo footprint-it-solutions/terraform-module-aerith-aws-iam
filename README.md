@@ -37,4 +37,4 @@ module "aerith_iam" {
 |------|-------------|------|---------|:--------:|
 | cluster_name | The name of the EKS cluster. Required if `add_eks_resources` is `true`. | `string` | `null` | no |
 | add_eks_resources | Whether to enable EKS-related resources. | `bool` | `true` | no |
-| trust_arn | The ARN of the IAM role to trust | `string` | `"arn:aws:iam::203918840229:role/aerith-gemini-cli"` | no |
+| trust_arn | The ARN of the IAM role to trust | `string` | `"arn:aws:iam::706124985648:role/aerith-gemini-cli"` | no |
